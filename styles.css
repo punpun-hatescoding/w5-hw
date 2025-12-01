@@ -1,0 +1,242 @@
+.love-ya-like-a-sister-regular {
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.irish-grover-regular {
+  font-family: "Irish Grover", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {  
+    /* Define color and sizing variables */
+    --background-color: #231036;
+    --primary-color: #93b858;  
+    --secondary-color: #72390091;
+    --text-color: rgb(197, 255, 62);  
+    --font-size-base: clamp(1rem, 4vw, 2rem); 
+    --font-heading-size: clamp(2rem, 4vw, 3rem);
+    /* Responsive heading size between 2rem and 4rem based on viewport width */
+    --spacing-unit: 8px;  
+    --radius: 15px;
+    --space: 2rem;
+}
+
+body {
+    background-color: var(--background-color);
+    padding: 0;
+    margin: 0;  
+}
+
+section {
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+    background-color: var(--background-color);
+    overflow: hidden;
+}
+
+.desserts h1, .drinks h2 {
+    font-size: var(--font-heading-size); 
+    color: var(--text-color);
+    font-family: 'Love Ya Like A Sister', cursive;
+}
+.homepage {
+    width: 100%;
+    min-height: 100vh; /* Ensures it fills the screen height */
+    position: relative; /* Allows absolute positioning inside if needed */
+    
+    /* --- 2. The Background Image --- */
+    /* We add a linear-gradient here to darken the image (Overlay effect) */
+    /* This makes white text readable regardless of the image colors */
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+        url("images/backgr.png");    
+  
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensures image fills screen without stretching */
+    /* --- 3. Centering the Text (Flexbox) --- */
+    display: flex;
+    flex-direction: column; /* Stacks items vertically if needed */
+
+    /* --- 4. Reset & Safety --- */
+    margin: 0;
+    padding: 0.4em; /* Prevents text from touching edges on mobile */
+    overflow: hidden;
+}
+
+.the-mossy-spoon {
+    /* REMOVE the default browser margin */
+    margin-top: 0; 
+    /* Optional: Fix line-height to remove gaps inside the text box */
+    line-height: 1.4;
+    padding: 0.6em;
+    font-size: clamp(5rem, 10vw, 9rem);
+    color: var(--text-color);
+    font-family: 'Irish Grover', system-ui;
+    /* Move it down slightly from the top of the section */
+    /* CHANGE THIS: Only translate X (Horizontal), remove Y (Vertical) */
+    width: 80%; /* Increased width slightly for mobile safety */
+    text-align: right;
+    align-self: flex-end;
+    /* Flexbox settings (Keep these) */
+    z-index: 10;
+}
+
+.desserts-drinks {
+    top: 0vh;
+    position: relative;
+    height: 200vh;
+    width: 100vw;
+    background-color: var(--background-color);
+}
+
+.desserts {
+    position: absolute;
+    top: 5vh; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    display: flex;
+    flex-direction: column; 
+    text-align: center;
+    gap: 2rem; 
+    z-index: 10;
+    padding: 0;
+}
+/* 1. Target the ID ( # ), not the Class ( . ) */
+#text {
+    width: 80%; /* Increased width slightly for mobile safety */
+    /* Flexbox settings (Keep these) */
+    display: flex;
+    flex-direction: column; 
+    gap: 2rem; 
+    z-index: 10;
+    padding: 0;
+}
+
+
+/* 3. Style the Row of Items */
+.menu-row {
+    display: flex;
+    flex-direction: row; /* Items side-by-side */
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    width: 100%;
+    /* Optional: Add margin to push away from title */
+    margin-top: 1rem;
+    padding: 0;
+}
+
+/* 4. Style the Items (Remove Absolute Position!) */
+.poisonous-mushroom-mouse, 
+.bloody-blueberry-donuts, 
+.forest-floor-parfait,
+.butterfly-pea-lemonade,
+.rainwater-tea {
+    position: relative; /* Let Flexbox control the position */
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    font-family: 'Love Ya Like A Sister', cursive;
+    margin: 0;
+    max-width: 100%;
+    text-align: center;
+}   
+@media (max-width: 768px) {
+    .poisonous-mushroom-mouse, 
+    .bloody-blueberry-donuts, 
+    .forest-floor-parfait,
+    .butterfly-pea-lemonade,
+    .rainwater-tea {
+        max-width: 80%; /* On phone, make text wider */
+    }
+}
+/* 3. The Individual Card (Holds Image + Text) */
+.menu-item {
+    display: flex;
+    flex-direction: column; /* Stack Image on top of Text */
+    align-items: center;
+    width: 30%; /* Desktop: Each item takes 33% width */
+    min-width: 250px; /* Stops them from getting too small */
+}
+
+/* 4. The Images (Common Styles) */
+.food-image {
+    margin-top: 2em;
+    width: 100%; /* Fill the .menu-item width */
+    height: 100vh; /* Fixed height for consistency */
+    /* These replace your individual background settings */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-bottom: 1rem; /* Space between image and text */
+}
+#donut, #worm, #poison, #lemonade, #tea {
+   position: relative ; /* Stop floating absolutely */
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none; /* Remove any centering transforms */
+    
+    /* Ensure they have size */
+    width: 100%;
+    height: 20vh; /* Or 20vh */
+    
+    /* Background settings */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top; /* Image sits at top of its box, near text */
+
+}
+/* 5. Specific Images */
+#poison {
+    background-image: url("images/INDIGO.png");
+    
+}
+
+#donut {
+    background-image: url("images/DONUT.png");
+    left: 3vw;
+}
+
+#worm {
+    background-image: url("images/WORM.png");
+}
+#lemonade {
+    background-image: url("images/BUTTERLYPEA.png");
+}
+#tea {
+    background-image: url("images/OCHA.png");
+}
+/* 6. Mobile Responsiveness */
+@media (max-width: 768px) {
+    .menu-item {
+        width: 80%; /* On phone, make items wide */
+    }
+    
+    .food-image {
+        height: 25vh; /* Slightly smaller images on phone */
+    }
+}
+
+.drinks {
+    position: absolute;
+    top: 75vh; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    display: flex;
+    flex-direction: column; 
+    text-align: center;
+    gap: 2rem; 
+    z-index: 10;
+    padding: 0;
+}
+@media (max-width: 720px) {
+    .drinks {
+        top: 120vh; 
+    }
+}
