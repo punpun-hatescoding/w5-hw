@@ -14,20 +14,80 @@
     --background-color: #231036;
     --primary-color: #93b858;  
     --secondary-color: #72390091;
-    --text-color: rgb(197, 255, 62);  
-    --font-size-base: clamp(1rem, 4vw, 2rem); 
-    --font-heading-size: clamp(2rem, 4vw, 3rem);
+    --text-color: rgb(197, 255, 62);
+    --font-subheading-size: clamp(1.5rem, 4vw, 2.5rem);  
+    --font-size-base: clamp(1rem, 4vw, 1.5rem); 
+    --font-heading-size: clamp(2rem, 5vw, 3rem);
     /* Responsive heading size between 2rem and 4rem based on viewport width */
     --spacing-unit: 8px;  
     --radius: 15px;
     --space: 2rem;
+    /* Width reserved for the price column - keeps prices aligned */
+    --price-col: clamp(4.5rem, 6.5vw, 6rem);
 }
 
 body {
     background-color: var(--background-color);
-    padding: 0;
-    margin: 0;  
+    .menu-item {
+        display: flex;
+        flex-direction: column; /* Stack Image on top of Text */
+        align-items: center;
+        gap: 2rem;
+        width: 30%; /* Desktop: Each item takes 33% width */
+        min-width: 250px; /* Stops them from getting too small */
+    }
+    /* Layout for item name/price pairs inside menu items */
+    .menu-item p[class] {
+        display: grid;
+        grid-template-columns: 1fr var(--price-col) auto;
+        align-items: center;
+        width: 100%;
+        max-width: 520px;
+        margin: 0.2rem 0;
+        gap: 0.5rem;
+    }
+    .menu-item .item-name {
+        text-align: left;
+        grid-column: 1 / 2;
+    }
+    .menu-item .item-price {
+        grid-column: 2 / 3; /* Fixed price column */
+        justify-self: end;
+        white-space: nowrap;
+        font-weight: 700;
+        color: rgb(255, 105, 180);
+    }
+    .desserts .menu-item .item-price,
+    .drinks .menu-item .item-price    {
+        display: table-column;
+    }
+    .menu-item .item-note {
+        grid-column: 3 / 4;
+        justify-self: start;
+        font-size: 0.85em;
+        color: rgb(255, 245, 245);
+    }
+
+    /* On small screens, collapse the note into a new line under the name/price */
+    @media (max-width: 720px) {
+        .menu-item p[class] {
+            grid-template-columns: 1fr var(--price-col);
+        }
+        .menu-item .item-note {
+            grid-column: 1 / -1;
+            justify-self: start;
+            margin-top: 0.15rem;
+            font-size: 0.85em;
+        }
+    }
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    opacity: 0.95;
 }
+.site-nav a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
 
 section {
     width: 100vw;
@@ -37,10 +97,16 @@ section {
     overflow: hidden;
 }
 
-.desserts h1, .drinks h2 {
+.desserts h1, .drinks h2, .main-course h4, .starters h3 {
     font-size: var(--font-heading-size); 
     color: var(--text-color);
     font-family: 'Love Ya Like A Sister', cursive;
+}
+h5 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem); 
+    color: var(--text-color);
+    font-family: 'Love Ya Like A Sister', cursive;
+    text-align: center;
 }
 .homepage {
     width: 100%;
@@ -74,9 +140,12 @@ section {
     padding: 0.6em;
     font-size: clamp(5rem, 10vw, 9rem);
     color: var(--text-color);
+    /* Soft neon glow */
+    text-shadow:
+      0 0 6px rgba(114, 150, 29, 0.9),
+      0 0 18px rgba(197,255,62,0.6),
+      0 0 30px rgba(147,184,88,0.45);
     font-family: 'Irish Grover', system-ui;
-    /* Move it down slightly from the top of the section */
-    /* CHANGE THIS: Only translate X (Horizontal), remove Y (Vertical) */
     width: 80%; /* Increased width slightly for mobile safety */
     text-align: right;
     align-self: flex-end;
@@ -87,12 +156,16 @@ section {
 .desserts-drinks {
     top: 0vh;
     position: relative;
-    height: 200vh;
+    height: 360vh;
     width: 100vw;
     background-color: var(--background-color);
 }
-
-.desserts {
+@media (max-width: 720px) {
+    .desserts-drinks {
+        height: 480vh;
+    }
+}
+.starters {
     position: absolute;
     top: 5vh; 
     left: 50%;
@@ -105,23 +178,79 @@ section {
     z-index: 10;
     padding: 0;
 }
-/* 1. Target the ID ( # ), not the Class ( . ) */
-#text {
-    width: 80%; /* Increased width slightly for mobile safety */
-    /* Flexbox settings (Keep these) */
+.starters h5, .main-course h5 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: var(--font-subheading-size);
+    color: rgb(244, 190, 190);
+}
+@media (max-width: 720px) {
+    .main-course {
+        top: 10vh; 
+    }
+}
+.main-course {
+    position: absolute;
+    top: 100vh; 
+    left: 50%;              
+    transform: translateX(-50%);
+    width: 90%;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+    text-align: center;
     gap: 2rem; 
     z-index: 10;
     padding: 0;
 }
+@media (max-width: 720px) {
+    .main-course {
+        top: 110vh; 
+    }
+}
+.desserts {
+    position: absolute;
+    top: 220vh; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    display: flex;
+    flex-direction: column; 
+    text-align: center;
+    gap: 2rem; 
+    z-index: 10;
+    padding: 0;
+}
+@media (max-width: 720px) {
+    .desserts {
+        top: 250vh; 
+    }
+}
+.drinks {
+    position: absolute;
+    top: 290vh; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    display: flex;
+    flex-direction: column; 
+    text-align: center;
+    gap: 2rem; 
+    z-index: 10;
+    padding: 0;
+}
+@media (max-width: 720px) {
+    .drinks {
+        top: 380vh; 
+    }
+}
+
 
 
 /* 3. Style the Row of Items */
 .menu-row {
     display: flex;
     flex-direction: row; /* Items side-by-side */
-    justify-content: center;
+    justify-content: space-around;
     gap: 2rem;
     flex-wrap: wrap;
     width: 100%;
@@ -129,13 +258,28 @@ section {
     margin-top: 1rem;
     padding: 0;
 }
-
 /* 4. Style the Items (Remove Absolute Position!) */
 .poisonous-mushroom-mouse, 
 .bloody-blueberry-donuts, 
 .forest-floor-parfait,
 .butterfly-pea-lemonade,
-.rainwater-tea {
+.rainwater-tea,
+.veggie,
+.mushroom,
+.salad,
+.bruschetta,
+.chicken-wings,
+.shrimp-cocktail,
+.calamari-rings,
+.beef-satay,
+.mushroom-risotto,
+.vegetable-stir-fry,
+.spinach-ricotta-ravioli,
+.grilled-salmon,
+.steak-mashed-potatoes,
+.lemon-herb-chicken,
+.seafood-paella,
+.eggplant-parmesan {
     position: relative; /* Let Flexbox control the position */
     font-size: var(--font-size-base);
     color: var(--text-color);
@@ -149,7 +293,23 @@ section {
     .bloody-blueberry-donuts, 
     .forest-floor-parfait,
     .butterfly-pea-lemonade,
-    .rainwater-tea {
+    .rainwater-tea,
+    .veggie,
+.mushroom,
+.salad,
+.bruschetta,
+.chicken-wings,
+.shrimp-cocktail,
+.calamari-rings,
+.beef-satay,
+.mushroom-risotto,
+.vegetable-stir-fry,
+.spinach-ricotta-ravioli,
+.grilled-salmon,
+.steak-mashed-potatoes,
+.lemon-herb-chicken,
+.seafood-paella,
+.eggplant-parmesan {
         max-width: 80%; /* On phone, make text wider */
     }
 }
@@ -158,8 +318,44 @@ section {
     display: flex;
     flex-direction: column; /* Stack Image on top of Text */
     align-items: center;
+    gap: 3rem;
     width: 30%; /* Desktop: Each item takes 33% width */
     min-width: 250px; /* Stops them from getting too small */
+}
+    /* Layout for item name/price pairs inside menu items */
+    .menu-item p[class] {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 420px;
+        margin: 0.25rem 0;
+        gap: 0.5rem;
+    }
+    .menu-item .item-name {
+        text-align: left;
+        flex: 1 1 auto;
+    }
+    .menu-item .item-price {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        font-weight: 700;
+    }
+    .menu-item .item-note {
+        margin-right: 0rem;
+        font-size: clamp(0.5rem, 4vw, 1.5rem);
+    }
+    /* Layout for item name/price pairs inside menu items */
+
+
+@media (max-width: 768px) {
+    .menu-item {
+        width: 80%; /* On phone, make items wide */
+    }
+    
+    .food-image {
+        height: 25vh; /* Slightly smaller images on phone */
+    }
 }
 
 /* 4. The Images (Common Styles) */
@@ -221,22 +417,96 @@ section {
         height: 25vh; /* Slightly smaller images on phone */
     }
 }
-
-.drinks {
-    position: absolute;
-    top: 75vh; 
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    display: flex;
-    flex-direction: column; 
-    text-align: center;
-    gap: 2rem; 
-    z-index: 10;
-    padding: 0;
+/* Footer styles */
+.site-footer {
+    background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.4));
+    color: var(--text-color);
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255,255,255,0.04);
 }
-@media (max-width: 720px) {
-    .drinks {
-        top: 120vh; 
+.site-footer .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.footer-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: clamp(0.8rem, 1.6vw, 1rem);
+    opacity: 0.95;
+}
+.footer-copy {
+    font-family: 'Irish Grover', system-ui;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+@media (max-width: 640px) {
+    .site-footer .container {
+        justify-content: center;
+        text-align: center;
+    }
+    .footer-copy {
+        order: 3;
+        width: 100%;
+        margin-top: 0.4rem;
+    }
+}
+
+/* Header styles */
+.site-header {
+    background: linear-gradient(90deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15));
+    color: var(--text-color);
+    padding: 0.6rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 300;
+    backdrop-filter: blur(4px);
+}
+.site-header .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.site-header .logo {
+    font-family: 'Irish Grover', system-ui;
+    font-size: clamp(1.1rem, 2.5vw, 2rem);
+    color: var(--text-color);
+    letter-spacing: 0.02em;
+}
+.site-nav {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+.site-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    opacity: 0.95;
+}
+.site-nav a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+@media (max-width: 640px) {
+    .site-header .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .site-nav {
+        gap: 0.5rem;
     }
 }

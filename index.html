@@ -12,50 +12,109 @@
     />
   </head>
   <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="logo">The Mossy Spoon</div>
+        <nav class="site-nav">
+          <a href="#home">Home</a>
+          <a href="#menu">Menu</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
     <main>
-      <section class="homepage">
+      <section class="homepage" id="home">
         <p class="the-mossy-spoon">The Mossy Spoon</p>
       </section>
-      <section class="desserts-drinks">
-        <div class="desserts">
-          <h1>Sweet Spores (Desserts)</h1>
-
+      <section class="desserts-drinks" id="menu">
+        <div class="starters">
+          <h3>Starters</h3>
+          <div class="menu-row">
+            <div class="menu-item"> 
+              <h5>Vegetarian</h5>
+              <p class="veggie"><span class="item-name">Veggie Spring Rolls</span><span class="item-price"> $5.99 </span></p>
+              <p class="mushroom"><span class="item-name">Stuffed Mushrooms</span><span class="item-price"> $6.49 </span></p>
+              <p class="salad"><span class="item-name">Caprese Salad</span><span class="item-price"> $7.25 </span><span class="item-note">signature!</span></p>
+              <p class="bruschetta"><span class="item-name">Bruschetta</span><span class="item-price"> $6.99 </span></p>
+            </div>
+            <div class="menu-item">
+              <h5>Non-Vegetarian</h5> 
+              <p class="chicken-wings"><span class="item-name">Chicken Wings</span><span class="item-price"> $8.99 </span></p>
+              <p class="shrimp-cocktail"><span class="item-name">Shrimp Cocktail</span><span class="item-price"> $9.95 </span><span class="item-note">signature!</span></p>
+              <p class="calamari-rings"><span class="item-name">Calamari Rings</span><span class="item-price"> $7.99 </span></p>
+              <p class="beef-satay"><span class="item-name">Beef Satay</span><span class="item-price"> $9.49 </span><span class="item-note"> new </span></p>
+            </div>
+        </div>
+        <div class="main-course">
+          <h4>Main Courses</h4>
           <div class="menu-row">
             <div class="menu-item">
-               <p class="poisonous-mushroom-mouse">Poisonous Mushroom Mousse</p>
-               <div id="poison" class="food-image"></div>
+               <h5>Vegetarian</h5>
+               <p class="mushroom-risotto"><span class="item-name">Mushroom Risotto</span><span class="item-price"> $12.99 </span></p>
+               <p class="vegetable-stir-fry"><span class="item-name">Vegetable Stir Fry</span><span class="item-price"> $11.49 </span></p>
+               <p class="spinach-ricotta-ravioli"><span class="item-name">Spinach and Ricotta Ravioli</span><span class="item-price"> $13.95 </span><span class="item-note">signature!</span></p>
+               <p class="eggplant-parmesan"><span class="item-name">Eggplant Parmesan</span><span class="item-price"> $10.99 </span><span class="item-note">new </span></p>
+             </div>
+
+             <div class="menu-item">
+               <h5>Non-Vegetarian</h5>
+               <p class="grilled-salmon"><span class="item-name">Grilled Salmon</span><span class="item-price"> $18.99 </span></p>
+               <p class="steak-mashed-potatoes"><span class="item-name">Steak with Mashed Potatoes</span><span class="item-price"> $21.95 </span></p>
+               <p class="lemon-herb-chicken"><span class="item-name">Lemon Herb Roasted Chicken</span><span class="item-price"> $16.99 </span></p>
+               <p class="seafood-paella"><span class="item-name">Seafood Paella</span><span class="item-price"> $19.49 </span><span class="item-note">signature!</span></p>
+             </div>
+           </div>
+         </div>
             </div>
+          </div>
+        </div>
+        <div class="desserts">
+          <h1>Sweet Spores (Desserts)</h1>
+          <div class="menu-row">
+        <div class="menu-item">
+          <p class="poisonous-mushroom-mouse"><span class="item-name">Poisonous Mushroom Mousse</span><span class="item-price">$6.50</span></p>
+          <div id="poison" class="food-image"></div>
+        </div>
+
+        <div class="menu-item">
+          <p class="bloody-blueberry-donuts"><span class="item-name">Bloody Blueberry Donuts</span><span class="item-price">$5.75</span></p>
+          <div id="donut" class="food-image"></div>
+        </div>
 
             <div class="menu-item">
-               <p class="bloody-blueberry-donuts">Bloody Blueberry Donuts</p>  
-               <div id="donut" class="food-image"></div>
-            </div>
-
-            <div class="menu-item">
-              <p class="forest-floor-parfait">Forest Floor Parfait</p>
+              <p class="forest-floor-parfait"><span class="item-name">Forest Floor Parfait</span><span class="item-price">$7.25</span></p>
               <div id="worm" class="food-image"></div>
-
 
         </div>
             </div>
           </div>
+           
          <div class="drinks">
             <h2>Potions & Nectars (Drinks)</h2>
             <div class="menu-row">
                 <div class="menu-item">
-                    <p class="butterfly-pea-lemonade">Butterfly Pea Lemonade</p>
+                    <p class="butterfly-pea-lemonade"><span class="item-name">Butterfly Pea Lemonade</span><span class="item-price">$4.50</span></p>
                     <div id="lemonade" class="food-image"></div>
                 </div>
                 <div class="menu-item">
-                    <p class="rainwater-tea">Rainwater Tea</p>
+                    <p class="rainwater-tea"><span class="item-name">Rainwater Tea</span><span class="item-price">$3.75</span></p>
                     <div id="tea" class="food-image"></div>
                 </div>
             </div>
             
 
          </div>
-        </div>
       </section>
+
     </main>
+    <footer class="site-footer" id="contact">
+      <div class="container">
+        <div class="footer-hours" aria-label="Opening hours">
+          <span class="footer-line">Mon to Fri 11 AM — 9 PM</span>
+          <span class="footer-line">Sat &amp; Sun 11 AM — 12 PM</span>
+        </div>
+        <div class="footer-copy">&copy; <span class="year">2025</span> The Mossy Spoon</div>
+      </div>
+    </footer>
   </body>
 </html>
