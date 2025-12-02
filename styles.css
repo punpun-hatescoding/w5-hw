@@ -163,7 +163,7 @@ h5 {
 }
 @media (max-width: 720px) {
     .desserts-drinks {
-        height: 480vh;
+        height: 530vh;
     }
 }
 .starters {
@@ -205,7 +205,7 @@ h5 {
 }
 @media (max-width: 720px) {
     .main-course {
-        top: 110vh; 
+        top: 130vh; 
     }
 }
 .desserts {
@@ -223,7 +223,7 @@ h5 {
 }
 @media (max-width: 720px) {
     .desserts {
-        top: 250vh; 
+        top: 270vh; 
     }
 }
 .drinks {
@@ -241,7 +241,7 @@ h5 {
 }
 @media (max-width: 720px) {
     .drinks {
-        top: 380vh; 
+        top: 420vh; 
     }
 }
 
